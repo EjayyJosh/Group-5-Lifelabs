@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News Blog</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="news.css" />
+  <style>
+    /* Sidebar */
+    .sidebar {
+      width: 80px;
+      background-color: rgba(18, 18, 18, 0.9);
+      border-right: 3px solid red;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      gap: 20px;
+      box-shadow: inset -5px 0 10px 2px #7a0000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 1000;
+    }
+
+    .nav-top {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .nav-item {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 700;
+      transition: color 0.3s;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      padding: 8px 0;
+      border-left: 4px solid transparent;
+    }
+
+    .nav-item i {
+      font-size: 34px;
+      color: red;
+      transition: background-color 0.3s;
+    }
+
+    .nav-item.active,
+    .nav-item:hover {
+      background-color: rgba(255, 0, 0, 0.15);
+      border-left: 4px solid red;
+    }
+
+    .nav-item.active i,
+    .nav-item:hover i {
+      color: white;
+      background-color: red;
+      border-radius: 8px;
+      padding: 6px;
+    }
+
+    .nav-item span {
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+
+    /* Back button */
+    .nav-back {
+      border: none;
+      background: none;
+      color: white;
+      cursor: pointer;
+      font-size: 28px;
+      padding: 10px 0;
+      transition: color 0.3s;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-back:hover {
+      color: red;
+    }
+
+    /* Main area */
+.main-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: url(bg3.jpeg) no-repeat center center / cover;
+  position: relative;
+  color: white;
+  overflow: visible;
+  padding: 10px 20px 20px 20px;
+}
+
+    /* Top search bar */
+    .topbar {
+      height: 50px;
+      background-color: #8b0000;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      box-shadow: 0 0 8px 2px #7a0000;
+      margin-bottom: 20px; /* Raised a bit */
+      flex-shrink: 0;
+    }
+
+    .search-wrapper {
+      width: 100%;
+      display: flex;
+    }
+
+    .search-input {
+      flex-grow: 1;
+      height: 34px;
+      background-color: #7a0000;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      color: white;
+      padding-left: 12px;
+      font-size: 14px;
+      font-family: monospace;
+    }
+
+    .search-input::placeholder {
+      color: #f8c0c0;
+    }
+
+    .search-input:focus {
+      outline: none;
+      background-color: #a91010;
+    }
+
+    .search-btn {
+      width: 38px;
+      height: 34px;
+      background-color: black;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .search-btn:hover {
+      background-color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" role="navigation">
+      <div class="nav-top">
+        <a href="index.html" class="nav-item" title="Home" aria-label="Home">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="stream.html" class="nav-item" title="Stream" aria-label="Stream">
+          <i class="fas fa-camera"></i>
+          <span>Stream</span>
+        </a>
+        <a href="news.html" class="nav-item active" title="News blog" aria-label="News blog">
+          <i class="fas fa-book"></i>
+          <span>News blog</span>
+        </a>
+      </div>
+      <button class="nav-back" title="Go back" aria-label="Go back" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-area">
+      <header class="topbar">
+        <form class="search-wrapper" role="search" onsubmit="return false;">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="search-input"
+            aria-label="Search news"
+          />
+          <button class="search-btn" aria-label="Search button">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </header>
+
+      <div class="content">
+        <!-- News articles container -->
+        <section class="news-articles">
+          <article class="news-article" tabindex="0">
+            <h2>CODM Season 13: What's New?</h2>
+            <time datetime="2024-06-20">June 20, 2024</time>
+            <p>The latest update for Call of Duty Mobile introduces the "Crimson Shadow" operator, a brand new Battle Pass filled with exclusive skins and rewards, and the highly anticipated "Nightfall" multiplayer map. Experience the revamped weapon arsenal with gameplay improvements across the board.</p>
+          </article>
+
+          <article class="news-article" tabindex="0">
+            <h2>Buffs: Enhancing Your Arsenal</h2>
+            <time datetime="2024-06-18">June 18, 2024</time>
+            <p>The RUS-79U SMG gets improved recoil stability and faster reload times, perfect for close-range combat. The Arctic .50 sniper rifle now has increased damage over distance. Plus, Ajax’s sprint recovery speed has been boosted to keep you in the fight longer.</p>
+          </article>
+
+          <article class="news-article" tabindex="0">
+            <h2>Nerfs: Balancing the Battlefield</h2>
+            <time datetime="2024-06-16">June 16, 2024</time>
+            <p>The MSMC SMG’s firing rate has been slightly reduced and the AUG assault rifle’s hip-fire accuracy has been nerfed. Additionally, UAV scorestreak duration dropped from 60 to 45 seconds, helping balance map control.</p>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

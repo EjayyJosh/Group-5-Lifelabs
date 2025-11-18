@@ -1,0 +1,407 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+  user-select: none;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 80px;
+  background-color: rgba(18, 18, 18, 0.9);
+  border-right: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  gap: 20px;
+  box-shadow: inset -5px 0 10px 2px #7a0000;
+}
+
+.nav-top {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  align-items: center;
+}
+
+.nav-item {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  transition: color 0.3s;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  padding: 8px 0;
+  border-left: 4px solid transparent;
+}
+
+.nav-item i {
+  font-size: 34px;
+  color: red;
+  transition: background-color 0.3s;
+}
+
+.nav-item.active, 
+.nav-item:hover {
+  background-color: rgba(255, 0, 0, 0.15);
+  border-left: 4px solid red;
+}
+
+.nav-item.active i,
+.nav-item:hover i {
+  color: white;
+  background-color: red;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.nav-item span {
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+/* Back button */
+.nav-back {
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  font-size: 28px;
+  padding: 10px 0;
+  transition: color 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-back:hover {
+  color: red;
+}
+
+/* Main area */
+.main-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: url(bg2.jpg) no-repeat center center / cover;
+  position: relative;
+  color: white;
+  overflow: visible;
+  padding: 10px 20px 20px 20px;
+}
+
+/* Top search bar */
+.topbar {
+  height: 50px;
+  background-color: #8b0000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 8px 2px #7a0000;
+}
+
+.search-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.search-input {
+  flex-grow: 1;
+  height: 34px;
+  background-color: #7a0000;
+  border: none;
+  border-radius: 8px 0 0 8px;
+  color: white;
+  padding-left: 12px;
+  font-size: 14px;
+  font-family: monospace;
+}
+
+.search-input::placeholder {
+  color: #f8c0c0;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: #a91010;
+}
+
+.search-btn {
+  width: 38px;
+  height: 34px;
+  background-color: black;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn:hover {
+  background-color: #ff0000;
+}
+
+/* Stream content layout */
+.stream-content {
+  display: flex;
+  gap: 20px;
+  height: auto;  /* instead of calc(...) */
+  overflow: visible;
+}
+
+.stream-video {
+  flex: 3;
+  background: black;
+  border: 3px solid red;
+  border-radius: 16px;
+  box-shadow: 0 0 15px 3px red;
+  position: relative;
+  overflow: hidden;
+
+  /* Force container aspect ratio 16:9 */
+  width: 100%;            /* fill available flexbox width */
+  max-width: 960px;       /* limit max width */
+  aspect-ratio: 16 / 9;   /* maintain 16:9 ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;         /* center horizontally if needed */
+}
+
+.stream-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* Scale image inside container, no cropping */
+  border-radius: 13px;
+  display: block;
+}
+.stream-content {
+  flex-grow: 1;
+  display: flex;
+  gap: 20px;
+  height: auto; /* change from fixed height or calc(...) */
+  overflow: visible; /* Avoid clipping parent */
+}
+/* Right panel (facecam + chat) */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Facecam box */
+.facecam {
+  background-color: #222;
+  border-radius: 16px;
+  border: 3px solid red;
+  box-shadow: 0 0 10px 2px red;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+/* Chat box */
+.chat-box {
+  background-color: #222;
+  border-radius: 16px;
+  border: 3px solid red;
+  box-shadow: 0 0 10px 2px red;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  font-weight: 700;
+  padding: 10px;
+  border-bottom: 1px solid #7a0000;
+  text-align: center;
+  user-select: none;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 13px;
+  font-family: monospace;
+  color: white;
+  background-color: #111;
+  border-radius: 0 0 0 16px;
+}
+
+.chat-messages p {
+  margin: 5px 0;
+}
+
+.chat-input {
+  border: none;
+  border-top: 1px solid #7a0000;
+  padding: 10px;
+  font-size: 14px;
+  font-family: monospace;
+  background-color: #111;
+  color: white;
+  outline: none;
+  border-radius: 0 0 16px 16px;
+}
+
+.chat-input::placeholder {
+  color: #7a0000;
+}
+
+/* Bottom overlays */
+.bottom-overlays {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+.overlay {
+  flex: 1;
+  max-width: 200px;
+  background-color: #222;
+  border-radius: 12px;
+  border: 3px solid red;
+  box-shadow: 0 0 10px 3px red;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: default;
+  user-select: none;
+}
+
+.overlay i {
+  font-size: 24px;
+  color: red;
+}
+
+/* Exit fullscreen button bottom right */
+.exit-fullscreen {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: #222;
+  border: 3px solid red;
+  border-radius: 12px;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 0 12px 3px red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exit-fullscreen:hover {
+  background-color: #b00;
+}
+
+/* Scrollbar styling for chat */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 4px;
+}
+.chat-messages::-webkit-scrollbar-track {
+  background-color: #111;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 3px solid red;
+  }
+  .nav-top {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .nav-item {
+    flex-direction: row;
+    gap: 6px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .nav-item span {
+    display: none;
+  }
+  .main-area {
+    padding: 10px;
+  }
+  .stream-content {
+    flex-direction: column;
+    height: auto !important;
+  }
+  .stream-video {
+    height: 250px;
+  }
+  .right-panel {
+    flex-direction: row;
+    gap: 10px;
+    height: 220px;
+  }
+  .facecam {
+    flex: 1;
+    height: 100%;
+  }
+  .chat-box {
+    flex: 1;
+    height: 100%;
+  }
+  .bottom-overlays {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+}
